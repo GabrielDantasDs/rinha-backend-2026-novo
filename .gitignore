@@ -5,3 +5,4 @@ preprocessed_data.bin
 hnsw_index.bin
 references.json
 test/*
+.DS_Store
