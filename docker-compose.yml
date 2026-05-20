@@ -18,8 +18,8 @@ services:
     deploy:
       resources:
         limits:
-          memory: 100mb
-          cpus: "0.25"
+          memory: 150mb
+          cpus: "0.4"
 
   app2:
     image: danttera/rinha-2026-novo:latest
@@ -32,7 +32,7 @@ services:
     networks:
       - backend
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:8080/ready"]
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/ready"] 
       interval: 5s
       timeout: 3s
       retries: 10
@@ -40,8 +40,8 @@ services:
     deploy:
       resources:
         limits:
-          memory: 100mb
-          cpus: "0.25"
+          memory: 150mb
+          cpus: "0.4"
 
   nginx:
     image: nginx:alpine
@@ -59,8 +59,8 @@ services:
     deploy:
       resources:
         limits:
-          memory: 150mb
-          cpus: "0.5"
+          memory: 50mb
+          cpus: "0.2"
 
 networks:
   backend:
