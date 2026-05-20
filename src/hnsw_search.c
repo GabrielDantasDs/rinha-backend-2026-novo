@@ -30,18 +30,14 @@ int hnsw_search_init(int size)
 
 static float dist2(const float *a, const float *b)
 {
-    float s0=0, s1=0, s2=0, s3=0;
-
-    for (int i = 0; i < 12; i += 4) {
-        float d0 = a[i]-b[i], d1 = a[i+1]-b[i+1],
-              d2 = a[i+2]-b[i+2], d3 = a[i+3]-b[i+3];
-        s0+=d0*d0; s1+=d1*d1; s2+=d2*d2; s3+=d3*d3;
+    float s = 0;
+    for (int i = 0; i < DIM; i++)
+    {
+        float d = a[i] - b[i];
+        s += d * d;
     }
-
-    float d12 = a[12]-b[12], d13 = a[13]-b[13];
-    return s0+s1+s2+s3 + d12*d12 + d13*d13;
+    return s;
 }
-
 
 
 static int search_layer(hnsw_header_t *h, const float *q,
