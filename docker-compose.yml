@@ -7,10 +7,8 @@ services:
         hard: 65536
     expose:
       - "8080"
-    networks:
-      - backend
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:8080/ready"]
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/ready"]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -29,10 +27,8 @@ services:
         hard: 65536
     expose:
       - "8080"
-    networks:
-      - backend
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:8080/ready"] 
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/ready"] 
       interval: 5s
       timeout: 3s
       retries: 10
@@ -54,14 +50,8 @@ services:
         condition: service_healthy
       app2:
         condition: service_healthy
-    networks:
-      - backend
     deploy:
       resources:
         limits:
           memory: 50mb
           cpus: "0.2"
-
-networks:
-  backend:
-    driver: bridge
