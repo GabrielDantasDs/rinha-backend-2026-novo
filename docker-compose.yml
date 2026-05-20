@@ -15,11 +15,7 @@ services:
       timeout: 3s
       retries: 10
       start_period: 30s
-    deploy:
-      resources:
-        limits:
-          memory: 150mb
-          cpus: "0.4"
+
 
   app2:
     image: danttera/rinha-2026-novo:latest
@@ -38,10 +34,7 @@ services:
       retries: 10
       start_period: 30s
     deploy:
-      resources:
-        limits:
-          memory: 150mb
-          cpus: "0.4"
+
 
   nginx:
     image: nginx:alpine
@@ -56,11 +49,7 @@ services:
         condition: service_healthy
     networks:
       - backend
-    deploy:
-      resources:
-        limits:
-          memory: 50mb
-          cpus: "0.2"
+
 
 networks:
   backend:
